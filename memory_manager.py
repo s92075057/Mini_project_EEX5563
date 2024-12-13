@@ -11,8 +11,6 @@ class MemoryManager:
     def allocate(self, block_size):
         """
         Allocates memory using the Next Fit algorithm.
-        :param block_size: Size of the memory block to allocate.
-        :return: Starting index of allocated block, or -1 if allocation fails.
         """
         start = self.last_position
         for i in range(self.size):
@@ -26,8 +24,6 @@ class MemoryManager:
     def deallocate(self, start, block_size):
         """
         Deallocates a memory block.
-        :param start: Starting index of the block to deallocate.
-        :param block_size: Size of the memory block.
         """
         for i in range(start, start + block_size):
             self.memory[i % self.size] = 0
@@ -35,8 +31,8 @@ class MemoryManager:
     def _can_allocate(self, start, block_size):
         """
         Checks if memory can be allocated at a given position.
-        :param start: Starting index.
-        :param block_size: Size of the memory block.
+        : start: Starting index.
+        : block_size: Size of the memory block.
         :return: True if memory can be allocated, False otherwise.
         """
         if start + block_size > len(self.memory):  # Check for out-of-bounds
